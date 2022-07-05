@@ -1,8 +1,14 @@
-import { Box, Flex, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Box, Code, Flex, ListItem, UnorderedList } from "@chakra-ui/react";
 import Project from "../Project";
 import React from "react";
 import Terminal from 'react-console-emulator';
 
+const UsageCommand = ({ command, description }: {command: string, description: string}) => (
+  <Flex justifyContent='space-between'>
+    <Box as='span' width='100%' color='white'>{command}</Box>
+    <Box as='span' width='100%'>{description}</Box>
+  </Flex>
+);
 
 const Wea = () => {
   const AnsiColors: {[key: string]: string} = {
@@ -17,6 +23,11 @@ const Wea = () => {
     ['\\x1b[92m']: '<span style="color: lightgreen">',
     ['\\x1b[31m']: '<span style="color: red">',
     ['\\x1b[32m']: '<span style="color: green">',
+    ['\u2196']: '<span style="font-size: 0.72rem">↖</span>',
+    ['\u2197']: '<span style="font-size: 0.72rem">↗</span>',
+    ['\u2198']: '<span style="font-size: 0.72rem">↘</span>',
+    ['\u2199']: '<span style="font-size: 0.72rem">↙</span>',
+    ["\\'"]: "'",
   }
   const commands = {
     wea: {
@@ -26,8 +37,7 @@ const Wea = () => {
         try {
           const url = `https://f7olivera-portfolio.herokuapp.com/wea/${args.join('_')}`;
           const response = await (await (await fetch(url)).json()).message;
-
-          return response.replace(/\\x1b\[\d+;?\d?m/g, (ansiCode: string) => AnsiColors[ansiCode]).replaceAll('\\\\', "\\");
+          return response.replace(/(\\x1b\[\d+;?\d?m|\u2196|\u2197|\u2198|\u2199|\\')/g, (ansiCode: string) => AnsiColors[ansiCode]).replaceAll('\\\\', "\\");
         } catch {
           return 'Failed to fetch.'
         }
@@ -65,16 +75,18 @@ const Wea = () => {
       <Box fontWeight='bold' fontSize='xl'>Try it out!</Box>
       <Terminal
         dangerMode={true}
-        promptLabelStyle={{ paddingTop: '0px' }}
+        // fontFamily: '"Nanum Gothic Coding", monospace'
+        style={{ height: '25rem', marginBottom: '1rem', maxWidth: '70rem', backgroundColor: 'var(--chakra-colors-terminal)', whiteSpace: 'pre' }}
+        promptLabelStyle={{ paddingTop: '0px', paddingBottom: '1rem' }}
         inputTextStyle={{ spellCheck: false }}
-        style={{ maxHeight: '20rem', marginBottom: '1rem', backgroundColor: '#101010', whiteSpace: 'pre' }}
-        messageStyle={{ fontSize: '0.85rem', lineHeight: '1.15rem' }}
+        messageStyle={{  fontSize: '0.85rem', lineHeight: '1.15rem' }}
         commands={commands}
         promptLabel={'$'}/>
       <Box fontWeight='bold' fontSize='xl'>Details</Box>
       <Flex flexDirection='column' gap={2} mb='1rem'>
         <Box>
-          wea is an ASCII-decorated command-line program to get a weather report in your terminal, for any location and in
+          wea is an ASCII-decorated command-line program to get a weather report in your terminal, for any location and
+          in
           multiple languages.
         </Box>
       </Flex>
@@ -94,6 +106,23 @@ const Wea = () => {
         <ListItem>Metric and imperial unit system.</ListItem>
         <ListItem>Multilingual support.</ListItem>
       </UnorderedList>
+      <Box fontWeight='bold' fontSize='xl' mb='1rem'>Usage</Box>
+      <Box backgroundColor='terminal' padding={5} borderRadius='md' maxWidth='70rem'>
+        wea [-h] [-c | -f | -l [...] | -u [default | metric | imperial] | --lang | -k | --config]<br/>
+        <br/>
+        options:<br/>
+        <Flex gap={1} flexDirection='column' justifyContent='space-between'>
+          <UsageCommand command='-h, --help' description='Shows this help message and exits.'/>
+          <UsageCommand command='-c, --current' description='Shows current weather for the set location.'/>
+          <UsageCommand command='-f, --forecast' description='Shows weather forecast for the set location.'/>
+          <UsageCommand command='-l [ ...], --location [ ...]' description='Sets a location.'/>
+          <UsageCommand command='-u [default | metric | imperial], --units [default | metric | imperial]'
+                        description='Changes unit system.'/>
+          <UsageCommand command='--lang' description='Sets new language.'/>
+          <UsageCommand command='-k , --key' description='Sets the OpenWeather API key.'/>
+          <UsageCommand command='--config' description='Shows current user configuration path and content.'/>
+        </Flex>
+      </Box>
     </Project>
   );
 }

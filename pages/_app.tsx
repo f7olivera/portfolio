@@ -13,6 +13,7 @@ import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
   colors: {
+    'terminal': '#101010',
     'uwu': '#4a4a81',
     'zinc.800.bluer': '#27272c',
     'zinc.800': '#27272a',

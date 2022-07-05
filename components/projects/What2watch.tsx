@@ -13,7 +13,7 @@ const What2watch = () => {
   return (
     <Project
       name='what2watch'
-      description='The classic movie app.'
+      description='A website to discover movies and TV shows.'
       shortDescription='The classic movie app.'
       url='https://what2watch-k.vercel.app'
       codeUrl='https://github.com/f7olivera/what2watch'
