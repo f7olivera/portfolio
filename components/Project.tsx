@@ -4,7 +4,7 @@ import {
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import Image from "next/image";
-import { FiExternalLink } from "react-icons/Fi";
+import { FiExternalLink } from "react-icons/fi";
 
 const CustomBadge = ({ fontSize, children }: {fontSize: string, children: ReactNode}) => (
   <Badge fontSize={fontSize} variant='outline' color='gray.200'>

@@ -1,6 +1,6 @@
 import { Box, Flex, Icon } from "@chakra-ui/react";
-import { AiFillGithub, AiFillLinkedin } from "react-icons/Ai";
-import { MdEmail } from "react-icons/Md";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { MdEmail } from "react-icons/md";
 import Link from "next/link";
 
 const Contact = () => {

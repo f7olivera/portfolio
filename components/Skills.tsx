@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
-import { BsArrowRightShort } from "react-icons/Bs";
+import { BsArrowRightShort } from "react-icons/bs";
 
 interface SkillProps {
   name: string,
