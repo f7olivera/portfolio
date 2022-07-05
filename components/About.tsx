@@ -9,8 +9,7 @@ const About = () => {
           Full Stack Developer.
         </Box>
         <Box mt={4} textColor='gray.300' fontSize='lg'>
-          Welcome to my portfolio! I'm a Computer Science student<br/>
-          based in Buenos Aires, Argentina.<br/>
+          Welcome to my portfolio! I'm a Computer Science student based in Buenos Aires, Argentina.<br/>
           Here you will find some of the projects I've been working on.
         </Box>
       </Stack>
