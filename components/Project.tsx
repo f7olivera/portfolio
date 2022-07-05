@@ -119,7 +119,7 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
 
           </DrawerHeader>
           <DrawerBody>
-            <Flex flexDirection='column'>
+            <Flex flexDirection='column' mb='1rem'>
               {children}
             </Flex>
           </DrawerBody>
