@@ -1,10 +1,10 @@
 import {
-  Badge, Box, Button, Drawer, DrawerBody, DrawerContent, DrawerHeader,
-  DrawerOverlay, Flex, IconButton, Link, useDisclosure
+  Badge, Box, Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, IconButton, useDisclosure
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
+import Link from "next/link";
 
 const CustomBadge = ({ fontSize, children }: {fontSize: string, children: ReactNode}) => (
   <Badge fontSize={fontSize} variant='outline' color='gray.200'>
@@ -102,7 +102,7 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
                                          aria-label='Live demo'/>
                     </Box>
                   </Link> : name}
-                <Button backgroundColor='gray.600' _hover={{ backgroundColor: 'gray.500' }} width='fit-content'>
+                <Button backgroundColor='gray.600' _hover={{ backgroundColor: 'gray.500' }} minWidth='fit-content'>
                   <Link href={codeUrl} target='_blank'>
                     <Box fontSize='xl' mb={1} color='white'>
                       Source code
