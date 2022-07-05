@@ -46,7 +46,7 @@ const Chess = () => {
       </Flex>
       <Box fontWeight='bold' fontSize='xl'>Features</Box>
       <UnorderedList ms='2rem'>
-        <ListItem>Multiplayer real time chess matches.</ListItem>
+        <ListItem>Online real-time chess matches.</ListItem>
         <ListItem>Play against Stockfish on multiple difficulty levels.</ListItem>
         <ListItem>Edit, analyze and play from any position.</ListItem>
         <ListItem>Login/Register system.</ListItem>
