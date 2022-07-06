@@ -31,6 +31,7 @@ const ImageWithZoom = ({ imageSrc, blurDataURL }: Props) => {
           alt="screenshot"
           src={imageSrc}
           blurDataURL={blurDataURL}
+          style={{ borderRadius: '5px', }}
           placeholder="blur"
           width={1600}
           height={900}
