@@ -63,8 +63,7 @@ interface Props {
 }
 
 const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, badges, children }: Props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
@@ -88,38 +87,45 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
       </Flex>
       <Drawer placement='bottom' onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay/>
-        <DrawerContent fontFamily='sen' height='70%' backgroundColor='zinc.800.bluer'>
-          {/*<DrawerCloseButton/>*/}
+        <DrawerContent fontFamily='sen' height={{ base: '80%', md: '75%' }} backgroundColor='zinc.800.bluer'>
           <DrawerHeader borderBottomWidth='0.1px'>
             <Box width='100%'>
               <Flex lineHeight='initial' flexWrap='wrap' width='100%' justifyContent='space-between' alignItems='center'
-                    fontSize='4xl' mb={2}
+                    fontSize={{ base: '3xl', md: '4xl' }} mb={2}
                     color='white'>
                 {url ?
                   <Link href={url} target='_blank'>
-                    <Box width='fit-content' minWidth='max-content'>
-                      {name} <IconButton variant='unstyled' size='xs' me={4} as={FiExternalLink}
-                                         aria-label='Live demo'/>
-                    </Box>
+                    <a>
+                      <Flex width='fit-content' alignItems='center' minWidth='max-content'>
+                        <Box>{name}</Box>
+                        <Box as='span' display='flex' alignItems='center' fontSize={{ base: '1.5rem', md: '1.75rem' }} mx='0.5rem'>
+                          <IconButton variant='unstyled' size='1em' me={4} as={FiExternalLink}
+                                      aria-label='Live demo'/>
+                        </Box>
+                      </Flex>
+                    </a>
                   </Link> : name}
-                <Button backgroundColor='gray.600' _hover={{ backgroundColor: 'gray.500' }} minWidth='fit-content'>
+                <Button backgroundColor='gray.600' padding={{ base: '0.5rem', md: '1rem' }}
+                        _hover={{ backgroundColor: 'gray.500' }} minWidth='fit-content'>
                   <Link href={codeUrl} target='_blank'>
-                    <Box fontSize='xl' mb={1} color='white'>
-                      Source code
-                    </Box>
+                    <a>
+                      <Box fontSize={{ base: 'md', md: 'xl' }} color='white'>
+                        Source code
+                      </Box>
+                    </a>
                   </Link>
                 </Button>
               </Flex>
             </Box>
 
-            <Flex gap={2} mb={2} fontSize='20rem' flexWrap='wrap'>
-              {badges.map((badge) => (<CustomBadge fontSize='sm' key={badge}>{badge}</CustomBadge>))}
+            <Flex gap={2} mb={2} flexWrap='wrap'>
+              {badges.map((badge) => (<CustomBadge fontSize={{ base: 'xs', md: 'sm' }} key={badge}>{badge}</CustomBadge>))}
             </Flex>
-            <Box color='white' fontSize='xl'>{shortDescription}</Box>
+            <Box color='white' fontSize={{ base: 'md', md: 'xl' }}>{shortDescription}</Box>
 
           </DrawerHeader>
           <DrawerBody>
-            <Flex flexDirection='column' mb='1rem'>
+            <Flex flexDirection='column' onScroll={(e) => console.log(e.target)} mb='1rem'>
               {children}
             </Flex>
           </DrawerBody>
