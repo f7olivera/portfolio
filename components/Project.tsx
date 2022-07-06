@@ -15,11 +15,10 @@ const CustomBadge = ({ fontSize, children }: {fontSize: string | {base: string, 
 interface IProjectPreview {
   name: string,
   description: string,
-  imageSrc: string,
   badges: string[],
 }
 
-const ProjectPreview = ({ name, description, imageSrc, badges }: IProjectPreview) => (
+const ProjectPreview = ({ name, description, badges }: IProjectPreview) => (
   <>
     <Box width={{ base: '100%', md: '55%' }}>
       <Image
@@ -27,7 +26,9 @@ const ProjectPreview = ({ name, description, imageSrc, badges }: IProjectPreview
         width={8}
         height={5}
         style={{ borderRadius: '5px', }}
-        src={`/images/projects${imageSrc}`} alt={name}/>
+        alt={name}
+        src={`/images/projects/${name}/${name}.png`}
+        blurDataURL={`/images/projects/${name}/blur/${name}.png`}/>
     </Box>
     <Flex justifyContent='space-between' alignItems='center' fontWeight='md'
           flexDirection='column' width={{ base: '100%', md: '45%' }}>
@@ -57,12 +58,11 @@ interface Props {
   shortDescription: string,
   url: string,
   codeUrl: string,
-  imageSrc: string,
   badges: string[],
   children?: ReactNode,
 }
 
-const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, badges, children }: Props) => {
+const Project = ({ name, description, shortDescription, url, codeUrl, badges, children }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -82,7 +82,6 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
         <ProjectPreview
           name={name}
           description={description}
-          imageSrc={imageSrc}
           badges={badges}/>
       </Flex>
       <Drawer placement='bottom' onClose={onClose} isOpen={isOpen}>

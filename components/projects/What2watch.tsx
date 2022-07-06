@@ -17,16 +17,15 @@ const What2watch = () => {
       shortDescription='The classic movie app.'
       url='https://what2watch-k.vercel.app'
       codeUrl='https://github.com/f7olivera/what2watch'
-      imageSrc='/what2watch/what2watch.png'
       badges={['NEXT.JS', 'TYPESCRIPT', 'CHAKRA UI', 'REACT QUERY']}>
       <Flex cursor='pointer' width='100%' overflow='hidden' mb='1rem' ref={viewport}>
         <Flex>
           <ImageWithZoom imageSrc='/images/projects/what2watch/what2watch.png'
-                         blurDataURL='/images/projects/what2watch/what2watch.png'/>
+                         blurDataURL='/images/projects/what2watch/blur/what2watch.png'/>
           <ImageWithZoom imageSrc='/images/projects/what2watch/genre.png'
-                         blurDataURL='/images/projects/what2watch/genre.png'/>
+                         blurDataURL='/images/projects/what2watch/blur/genre.png'/>
           <ImageWithZoom imageSrc='/images/projects/what2watch/movie.png'
-                         blurDataURL='/images/projects/what2watch/movie.png'/>
+                         blurDataURL='/images/projects/what2watch/blur/movie.png'/>
         </Flex>
       </Flex>
       <Box fontWeight='bold' fontSize='xl'>Details</Box>

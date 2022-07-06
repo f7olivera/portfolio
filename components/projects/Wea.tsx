@@ -132,7 +132,6 @@ const Wea = () => {
       shortDescription='A command-line tool to check the weather.'
       url=''
       codeUrl='https://github.com/f7olivera/wea'
-      imageSrc='/wea/wea.png'
       badges={['PYTHON']}>
       <Box fontWeight='bold' fontSize='xl'>Try it out!</Box>
       <MyTerminal/>

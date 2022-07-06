@@ -16,18 +16,17 @@ const Chess = () => {
       description='A website to play chess online, edit and analyze board positions with a chess engine.'
       url='https://drj-chess.herokuapp.com'
       codeUrl='https://github.com/f7olivera/chess'
-      imageSrc='/chess/chess.png'
       badges={['DJANGO', 'REACT', 'REDUX', 'BOOTSTRAP', 'DJANGO-CHANNELS', 'SQLITE']}>
       <Flex cursor='pointer' width='100%' overflow='hidden' mb='1rem' ref={viewport}>
         <Flex>
           <ImageWithZoom imageSrc='/images/projects/chess/chess.png'
-                         blurDataURL='/images/projects/chess/chess.png'/>
+                         blurDataURL='/images/projects/chess/blur/chess.png'/>
           <ImageWithZoom imageSrc='/images/projects/chess/analysis.png'
-                         blurDataURL='/images/projects/chess/analysis.png'/>
+                         blurDataURL='/images/projects/chess/blur/analysis.png'/>
           <ImageWithZoom imageSrc='/images/projects/chess/create.png'
-                         blurDataURL='/images/projects/chess/create.png'/>
+                         blurDataURL='/images/projects/chess/blur/create.png'/>
           <ImageWithZoom imageSrc='/images/projects/chess/games.png'
-                         blurDataURL='/images/projects/chess/games.png'/>
+                         blurDataURL='/images/projects/chess/blur/games.png'/>
         </Flex>
       </Flex>
       <Box fontWeight='bold' fontSize='xl'>Details</Box>
