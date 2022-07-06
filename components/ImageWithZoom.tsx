@@ -27,18 +27,20 @@ const ImageWithZoom = ({ imageSrc, blurDataURL }: Props) => {
         onZoomChange={handleZoomChange}
         overlayBgColorEnd="rgba(0,0,0,0.9)"
         overlayBgColorStart="rgba(0,0,0,0.1)">
-        <Image
-          alt="screenshot"
-          src={imageSrc}
-          blurDataURL={blurDataURL}
-          placeholder="blur"
-          width={1600}
-          height={900}
-          quality="100"
-          layout="intrinsic"
-          objectFit={isZoomed ? "contain" : "cover"}
-          loading="lazy"
-          className="image"/>
+        <Box borderRadius='5px'>
+          <Image
+            alt="screenshot"
+            src={imageSrc}
+            blurDataURL={blurDataURL}
+            placeholder="blur"
+            width={1600}
+            height={900}
+            quality="100"
+            layout="intrinsic"
+            objectFit={isZoomed ? "contain" : "cover"}
+            loading="lazy"
+            className="image"/>
+        </Box>
       </Zoom>
       <Box
         position="absolute"

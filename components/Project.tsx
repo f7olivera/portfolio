@@ -20,12 +20,11 @@ interface IProjectPreview {
 
 const ProjectPreview = ({ name, description, badges }: IProjectPreview) => (
   <>
-    <Box width={{ base: '100%', md: '55%' }}>
+    <Box width={{ base: '100%', md: '55%' }} borderRadius='5px'>
       <Image
         layout='responsive'
         width={8}
         height={5}
-        style={{ borderRadius: '5px', }}
         alt={name}
         src={`/images/projects/${name.toLowerCase()}/${name.toLowerCase()}.png`}
         blurDataURL={`/images/projects/${name.toLowerCase()}/blur/${name.toLowerCase()}.png`}
