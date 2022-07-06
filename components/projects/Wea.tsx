@@ -1,6 +1,6 @@
 import { Box, Code, Flex, ListItem, UnorderedList } from "@chakra-ui/react";
 import Project from "../Project";
-import React from "react";
+import React, { Component } from "react";
 import Terminal from 'react-console-emulator';
 
 const UsageCommand = ({ command, description }: {command: string, description: string}) => (
@@ -10,8 +10,13 @@ const UsageCommand = ({ command, description }: {command: string, description: s
   </Flex>
 );
 
-const Wea = () => {
-  const AnsiColors: {[key: string]: string} = {
+class MyTerminal extends Component {
+  constructor(props) {
+    super(props)
+    this.terminal = React.createRef()
+  }
+
+  ansiColors: {[key: string]: string} = {
     ['\\x1b[93;1m']: '<span style="color: yellow">',
     ['\\x1b[90m']: '<span style="color: gray">',
     ['\\x1b[37m']: '<span>',
@@ -29,39 +34,93 @@ const Wea = () => {
     ['\u2199']: '<span style="font-size: 0.72rem">↙</span>',
     ["\\'"]: "'",
   }
-  const commands = {
+
+  // Experimental syntax, requires Babel with the transform-class-properties plugin
+  // You may also define commands within render in case you don't have access to class field syntax
+  commands = {
     wea: {
       description: 'Echo a passed string.',
       usage: 'wea <string>',
       fn: async (...args: string[]) => {
-        try {
-          const url = `https://f7olivera-portfolio.herokuapp.com/wea/${args.join('_')}`;
-          const response = await (await (await fetch(url)).json()).message;
-          return response.replace(/(\\x1b\[\d+;?\d?m|\u2196|\u2197|\u2198|\u2199|\\')/g, (ansiCode: string) => AnsiColors[ansiCode]).replaceAll('\\\\', "\\");
-        } catch {
-          return 'Failed to fetch.'
+        if (args.includes('-l')) {
+          return 'Can\'t change server location. Use the default command instead: wea {location}';
         }
+        const terminal = this.terminal.current;
+        const url = `https://f7olivera-portfolio.herokuapp.com/wea/${args.join('_')}`;
+        // const response = await (await (await fetch(url)).json()).message;
+        fetch(url).then(async (response) => {
+          const message = await (await response.json()).message;
+          terminal.pushToStdout(message.replace(/(\\x1b\[\d+;?\d?m|\u2196|\u2197|\u2198|\u2199|\\')/g, (ansiCode: string) => this.ansiColors[ansiCode]).replaceAll('\\\\', "\\"))
+        });
+        return 'Loading, please wait...';
       }
     }
   }
 
-  React.useEffect(() => {
-    const setPromptValue = () => {
-      const terminaInput: HTMLInputElement | null = document.querySelector('input[name="react-console-emulator__input"]');
-      if (terminaInput) {
-        terminaInput.value = 'wea';
-        terminaInput.spellcheck = false;
-        terminaInput.focus();
-      }
-    }
+  firstRender = false
 
-    const mutationObserver = new MutationObserver(setPromptValue);
-    // @ts-ignore
-    mutationObserver.observe(document.querySelector('#project_wea'), {
-      subtree: true,
-      childList: true
-    });
-  }, []);
+  componentDidMount() {
+    const terminalInput: HTMLInputElement | null = document.querySelector('input[name="react-console-emulator__input"]');
+    const terminalContent: HTMLDivElement | null = document.querySelector('[name="react-console-emulator__content"]');
+    if (!this.firstRender && terminalInput && terminalContent) {
+      terminalInput.spellcheck = false;
+      terminalInput.value = 'wea';
+      const ke = new KeyboardEvent('keydown', {
+        bubbles: true, cancelable: false, keyCode: 13
+      });
+      terminalInput.dispatchEvent(ke);
+      this.firstRender = true
+    }
+  }
+
+  render() {
+
+    return (
+      <Terminal
+        ref={this.terminal}
+        dangerMode={true}
+        // fontFamily: '"Nanum Gothic Coding", monospace'
+        style={{
+          height: '25rem',
+          marginBottom: '1rem',
+          maxWidth: '70rem',
+          backgroundColor: 'var(--chakra-colors-terminal)',
+          whiteSpace: 'pre'
+        }}
+        promptLabelStyle={{ paddingTop: '0px', paddingBottom: '1rem' }}
+        inputTextStyle={{ spellCheck: false }}
+        messageStyle={{ fontSize: '0.85rem', lineHeight: '1.15rem' }}
+        commands={this.commands}
+        promptLabel={'$'}/>
+    )
+  }
+}
+
+const Wea = () => {
+  const [exampleShown, setExampleShown] = React.useState(false);
+
+  React.useEffect(() => {
+    // const setPromptValue = () => {
+    //   const terminalInput: HTMLInputElement | null = document.querySelector('input[name="react-console-emulator__input"]');
+    //   const terminalContent: HTMLDivElement | null = document.querySelector('[name="react-console-emulator__content"]');
+    //   if (terminalInput && terminalContent?.children.length === 1) {
+    //     terminalInput.spellcheck = false;
+    //     terminalInput.value = 'wea -c';
+    //     const ke = new KeyboardEvent('keydown', {
+    //       bubbles: true, cancelable: false, keyCode: 13
+    //     });
+    //     terminalInput.dispatchEvent(ke);
+    //     setExampleShown(true);
+    //   }
+    // }
+    //
+    // const mutationObserver = new MutationObserver(setPromptValue);
+    // // @ts-ignore
+    // mutationObserver.observe(document.querySelector('#project_wea'), {
+    //   subtree: true,
+    //   childList: true
+    // });
+  }, [exampleShown]);
 
   return (
     <Project
@@ -73,15 +132,7 @@ const Wea = () => {
       imageSrc='/wea/wea.png'
       badges={['PYTHON']}>
       <Box fontWeight='bold' fontSize='xl'>Try it out!</Box>
-      <Terminal
-        dangerMode={true}
-        // fontFamily: '"Nanum Gothic Coding", monospace'
-        style={{ height: '25rem', marginBottom: '1rem', maxWidth: '70rem', backgroundColor: 'var(--chakra-colors-terminal)', whiteSpace: 'pre' }}
-        promptLabelStyle={{ paddingTop: '0px', paddingBottom: '1rem' }}
-        inputTextStyle={{ spellCheck: false }}
-        messageStyle={{  fontSize: '0.85rem', lineHeight: '1.15rem' }}
-        commands={commands}
-        promptLabel={'$'}/>
+      <MyTerminal/>
       <Box fontWeight='bold' fontSize='xl'>Details</Box>
       <Flex flexDirection='column' gap={2} mb='1rem'>
         <Box>
