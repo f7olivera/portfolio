@@ -34,7 +34,7 @@ const What2watch = () => {
         <Box>I used Chakra UI for the frontend and React Query to handle fetch requests to The Movie Database.</Box>
       </Flex>
       <Box fontWeight='bold' fontSize='xl'>Features</Box>
-      <UnorderedList ms='2rem' mb='1rem'>
+      <UnorderedList ms='2rem'>
         <ListItem>Find movies and TV shows.</ListItem>
         <ListItem>Filter titles by genre and rating.</ListItem>
         <ListItem>Get titles information and trailers.</ListItem>
