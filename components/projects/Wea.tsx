@@ -11,8 +11,9 @@ const UsageCommand = ({ command, description }: {command: string, description: s
 );
 
 class MyTerminal extends Component {
-  constructor(props) {
+  constructor(props: {} | Readonly<{}>) {
     super(props)
+    // @ts-ignore
     this.terminal = React.createRef()
   }
 
@@ -45,6 +46,7 @@ class MyTerminal extends Component {
         if (args.includes('-l')) {
           return 'Can\'t change server location. Use the default command instead: wea {location}';
         }
+        // @ts-ignore
         const terminal = this.terminal.current;
         const url = `https://f7olivera-portfolio.herokuapp.com/wea/${args.join('_')}`;
         // const response = await (await (await fetch(url)).json()).message;
@@ -77,6 +79,7 @@ class MyTerminal extends Component {
 
     return (
       <Terminal
+        // @ts-ignore
         ref={this.terminal}
         dangerMode={true}
         // fontFamily: '"Nanum Gothic Coding", monospace'

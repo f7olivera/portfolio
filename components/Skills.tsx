@@ -24,7 +24,7 @@ const Skills = () => {
       <Flex flexDirection='column' fontSize='1.125rem' fontWeight='medium' my={8}
             className="md:text-xl custom:text-lg">
         <Skill name='TypeScript' skillType='Frontend Language'/>
-        <Skill name='NextJS' skillType='Frontend Framework'/>
+        <Skill name='Next.js' skillType='Frontend Framework'/>
         <Skill name='Chakra UI' skillType='Component Library'/>
         <Skill name='Python' skillType='Backend Language'/>
         <Skill name='Django' skillType='Backend Framework'/>
@@ -33,7 +33,7 @@ const Skills = () => {
       <Flex flexWrap='wrap' fontSize='lg' fontWeight='medium' color='slate.300'>
         ...more skills include&nbsp;
         <Box color='white'>JavaScript</Box>,&nbsp;
-        <Box color='white'>ReactJS</Box>,&nbsp;
+        <Box color='white'>React</Box>,&nbsp;
         <Box color='white'>Redux</Box>,&nbsp;
         <Box color='white'>FastAPI</Box>&nbsp;
       </Flex>

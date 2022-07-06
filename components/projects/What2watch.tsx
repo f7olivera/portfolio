@@ -18,7 +18,7 @@ const What2watch = () => {
       url='https://what2watch-k.vercel.app'
       codeUrl='https://github.com/f7olivera/what2watch'
       imageSrc='/what2watch/what2watch.png'
-      badges={['NEXTJS', 'TYPESCRIPT', 'CHAKRA UI', 'REACT QUERY']}>
+      badges={['NEXT.JS', 'TYPESCRIPT', 'CHAKRA UI', 'REACT QUERY']}>
       <Flex cursor='pointer' width='100%' overflow='hidden' mb='1rem' ref={viewport}>
         <Flex>
           <ImageWithZoom imageSrc='/images/projects/what2watch/what2watch.png'

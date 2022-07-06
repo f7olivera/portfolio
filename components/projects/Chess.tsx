@@ -17,7 +17,7 @@ const Chess = () => {
       url='https://drj-chess.herokuapp.com'
       codeUrl='https://github.com/f7olivera/chess'
       imageSrc='/chess/chess.png'
-      badges={['DJANGO', 'REACTJS', 'REDUX', 'BOOTSTRAP', 'DJANGO-CHANNELS', 'SQLITE']}>
+      badges={['DJANGO', 'REACT', 'REDUX', 'BOOTSTRAP', 'DJANGO-CHANNELS', 'SQLITE']}>
       <Flex cursor='pointer' width='100%' overflow='hidden' mb='1rem' ref={viewport}>
         <Flex>
           <ImageWithZoom imageSrc='/images/projects/chess/chess.png'
@@ -37,7 +37,7 @@ const Chess = () => {
           engine.
         </Box>
         <Box>
-          I used Django for the backend and ReactJS + Redux for the frontend.<br/>
+          I used Django for the backend and React + Redux for the frontend.<br/>
           A WebSocket connection built with Django Channels is used to handle real time chess matches.
         </Box>
         <Box>
