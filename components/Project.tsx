@@ -6,7 +6,7 @@ import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 import Link from "next/link";
 
-const CustomBadge = ({ fontSize, children }: {fontSize: string, children: ReactNode}) => (
+const CustomBadge = ({ fontSize, children }: {fontSize: string | {base: string, md: string}, children: ReactNode}) => (
   <Badge fontSize={fontSize} variant='outline' color='gray.200'>
     {children}
   </Badge>
@@ -77,7 +77,7 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
             padding={3}
             color='white'
             role="group"
-            gap='1rem'
+            gap={{ base: '0.25rem', md: '1rem' }}
             flexDirection={{ base: 'column', md: 'row' }} onClick={onOpen} id={`project_${name}`}>
         <ProjectPreview
           name={name}
@@ -120,7 +120,8 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
             </Box>
 
             <Flex gap={2} mb={2} flexWrap='wrap'>
-              {badges.map((badge) => (<CustomBadge fontSize={{ base: 'xs', md: 'sm' }} key={badge}>{badge}</CustomBadge>))}
+              {badges.map((badge) => (
+                <CustomBadge fontSize={{ base: 'xs', md: 'sm' }} key={badge}>{badge}</CustomBadge>))}
             </Flex>
             <Box color='white' fontSize={{ base: 'md', md: 'xl' }}>{shortDescription}</Box>
 
