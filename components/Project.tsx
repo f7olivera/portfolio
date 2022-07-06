@@ -98,7 +98,8 @@ const Project = ({ name, description, shortDescription, url, codeUrl, imageSrc, 
                     <a>
                       <Flex width='fit-content' alignItems='center' minWidth='max-content'>
                         <Box>{name}</Box>
-                        <Box as='span' display='flex' alignItems='center' fontSize={{ base: '1.5rem', md: '1.75rem' }} mx='0.5rem'>
+                        <Box as='span' display='flex' alignItems='center' fontSize={{ base: '1.5rem', md: '1.85rem' }}
+                             mx={{ base: '0.25rem', md: '0.25rem' }}>
                           <IconButton variant='unstyled' size='1em' me={4} as={FiExternalLink}
                                       aria-label='Live demo'/>
                         </Box>
