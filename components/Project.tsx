@@ -27,8 +27,8 @@ const ProjectPreview = ({ name, description, badges }: IProjectPreview) => (
         height={5}
         style={{ borderRadius: '5px', }}
         alt={name}
-        src={`/images/projects/${name}/${name}.png`}
-        blurDataURL={`/images/projects/${name}/blur/${name}.png`}
+        src={`/images/projects/${name.toLowerCase()}/${name.toLowerCase()}.png`}
+        blurDataURL={`/images/projects/${name.toLowerCase()}/blur/${name.toLowerCase()}.png`}
         placeholder="blur"/>
     </Box>
     <Flex justifyContent='space-between' alignItems='center' fontWeight='md'
