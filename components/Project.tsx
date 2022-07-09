@@ -38,13 +38,13 @@ const ProjectPreview = ({ name, description, badges }: IProjectPreview) => (
         <Flex gap={2} mb='0.5rem' flexWrap='wrap'>
           {badges.map((badge) => (<CustomBadge fontSize='0.85rem' key={badge}>{badge}</CustomBadge>))}
         </Flex>
-        <Box fontSize='lg'>{description}</Box>
+        <Box color='gray.200' fontSize='lg'>{description}</Box>
       </Flex>
       <Button
         width='min-content'
-        bg='zinc.800'
+        backgroundColor='gray.700'
+        _groupHover={{ bg: 'gray.600' }}
         color='white'
-        _groupHover={{ bg: 'gray.700' }}
         transition='150ms'
         className="cursor-pointer rounded-md px-4 py-[0.10rem] text-xl text-gray-700 bg-zinc-800 text-white duration-100 group-hover:bg-gray-700">
         View
@@ -88,7 +88,7 @@ const Project = ({ name, description, shortDescription, url, codeUrl, badges, ch
       <Drawer placement='bottom' onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay/>
         <DrawerContent fontFamily='sen' height={{ base: '80%', md: '75%' }} backgroundColor='zinc.800.bluer'>
-          <DrawerHeader borderBottomWidth='0.1px'>
+          <DrawerHeader borderBottomWidth='1px' borderColor='gray.400'>
             <Box width='100%'>
               <Flex lineHeight='initial' flexWrap='wrap' width='100%' justifyContent='space-between' alignItems='center'
                     fontSize={{ base: '3xl', md: '4xl' }} mb={2}
@@ -100,14 +100,13 @@ const Project = ({ name, description, shortDescription, url, codeUrl, badges, ch
                         <Box>{name}</Box>
                         <Box as='span' display='flex' alignItems='center' fontSize={{ base: '1.5rem', md: '1.85rem' }}
                              mx={{ base: '0.25rem', md: '0.25rem' }}>
-                          <IconButton variant='unstyled' size='1em' me={4} as={FiExternalLink}
-                                      aria-label='Live demo'/>
+                          <IconButton variant='unstyled' size='1em' me={4} as={FiExternalLink} aria-label='Live demo'/>
                         </Box>
                       </Flex>
                     </a>
                   </Link> : name}
-                <Button backgroundColor='gray.600' padding={{ base: '0.5rem', md: '1rem' }}
-                        _hover={{ backgroundColor: 'gray.500' }} minWidth='fit-content'>
+                <Button backgroundColor='gray.700' _hover={{ bg: 'gray.600' }} padding={{ base: '0.5rem', md: '1rem' }}
+                        minWidth='fit-content'>
                   <Link href={codeUrl} target='_blank'>
                     <a>
                       <Box fontSize={{ base: 'md', md: 'xl' }} color='white'>
@@ -123,7 +122,7 @@ const Project = ({ name, description, shortDescription, url, codeUrl, badges, ch
               {badges.map((badge) => (
                 <CustomBadge fontSize={{ base: 'xs', md: 'sm' }} key={badge}>{badge}</CustomBadge>))}
             </Flex>
-            <Box color='white' fontSize={{ base: 'md', md: 'xl' }}>{shortDescription}</Box>
+            <Box color='gray.200' fontSize={{ base: 'md', md: 'xl' }}>{shortDescription}</Box>
 
           </DrawerHeader>
           <DrawerBody>
