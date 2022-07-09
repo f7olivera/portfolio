@@ -34,7 +34,7 @@ const Skills = () => {
         ...more skills include&nbsp;
         <Box color='white'>JavaScript</Box>,&nbsp;
         <Box color='white'>React</Box>,&nbsp;
-        <Box color='white'>React</Box>,&nbsp;
+        <Box color='white'>Redux</Box>,&nbsp;
         <Box color='white'>FastAPI</Box>,&nbsp;
         <Box color='white'>Cypress</Box>&nbsp;
       </Flex>
