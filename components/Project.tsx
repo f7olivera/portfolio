@@ -94,8 +94,8 @@ const Project = ({ name, description, shortDescription, url, codeUrl, badges, ch
                     fontSize={{ base: '3xl', md: '4xl' }} mb={2}
                     color='white'>
                 {url ?
-                  <Link href={url} target='_blank'>
-                    <a>
+                  <Link href={url}>
+                    <a target='_blank'>
                       <Flex width='fit-content' alignItems='center' minWidth='max-content'>
                         <Box>{name}</Box>
                         <Box as='span' display='flex' alignItems='center' fontSize={{ base: '1.5rem', md: '1.85rem' }}
@@ -108,7 +108,7 @@ const Project = ({ name, description, shortDescription, url, codeUrl, badges, ch
                 <Button backgroundColor='gray.700' _hover={{ bg: 'gray.600' }} padding={{ base: '0.5rem', md: '1rem' }}
                         minWidth='fit-content'>
                   <Link href={codeUrl} target='_blank'>
-                    <a>
+                    <a target='_blank'>
                       <Box fontSize={{ base: 'md', md: 'xl' }} color='white'>
                         Source code
                       </Box>

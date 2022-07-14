@@ -10,12 +10,12 @@ const Contact = () => {
 
       <Flex mt={4} mb={8} justifyContent='center' gap={6}>
         <Link href='https://github.com/f7olivera'>
-          <a>
+          <a target='_blank'>
             <Icon boxSize='2.5rem' as={AiFillGithub}/>
           </a>
         </Link>
         <Link href='https://www.linkedin.com/in/f7olivera/'>
-          <a>
+          <a target='_blank'>
             <Icon boxSize='2.5rem' as={AiFillLinkedin}/>
           </a>
         </Link>
