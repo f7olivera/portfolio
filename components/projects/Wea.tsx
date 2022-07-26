@@ -2,6 +2,8 @@ import { Box, Code, Flex, ListItem, UnorderedList } from "@chakra-ui/react";
 import Project from "../Project";
 import React, { Component } from "react";
 import Terminal from 'react-console-emulator';
+import Image from "next/image";
+import { useScrollBoost } from "react-scrollbooster";
 
 const UsageCommand = ({ command, description }: {command: string, description: string}) => (
   <Flex justifyContent='space-between'>
@@ -101,6 +103,10 @@ class MyTerminal extends Component {
 
 const Wea = () => {
   const [exampleShown, setExampleShown] = React.useState(false);
+  const [viewport] = useScrollBoost({
+    direction: "horizontal",
+    scrollMode: "transform",
+  });
 
   React.useEffect(() => {
     // const setPromptValue = () => {
@@ -133,8 +139,16 @@ const Wea = () => {
       url=''
       codeUrl='https://github.com/f7olivera/wea'
       badges={['PYTHON']}>
-      <Box fontWeight='bold' fontSize='xl'>Try it out!</Box>
-      <MyTerminal/>
+      <Box position='relative' maxWidth='768px' mb='1rem' borderRadius='md'>
+        <Image src='/images/projects/wea/demo.gif'
+               blurDataURL='/images/projects/wea/blur/wea.png'
+               layout='intrinsic'
+               style={{ borderRadius: '0.375rem' }}
+               width='1160px'
+               height='834px'/>
+      </Box>
+      {/*<Box fontWeight='bold' fontSize='xl'>Try it out!</Box>*/}
+      {/*<MyTerminal/>*/}
       <Box fontWeight='bold' fontSize='xl'>Details</Box>
       <Flex flexDirection='column' gap={2} mb='1rem'>
         <Box>
