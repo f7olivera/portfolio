@@ -26,10 +26,10 @@ const Navbar = () => {
   return (
     <Box as='header' fontFamily='jost' py={8}>
       <Flex flexWrap='wrap'>
-        <TextLink text="Home" url="/#"/>
         <TextLink text="Skills" url="/#skills"/>
         <TextLink text="Projects" url="/#projects"/>
         <TextLink text="Contact" url="/#contact"/>
+        <TextLink text="Resume" url="/resume"/>
       </Flex>
     </Box>
   );
