@@ -6,7 +6,7 @@ const About = () => {
       <Stack>
         <Box fontSize='4xl' fontWeight='bold' textColor='white'>Facundo Olivera</Box>
         <Box mt={4} textColor='gray.200' fontSize='2xl'>
-          Full Stack Developer.
+          Full Stack Developer
         </Box>
         <Box mt={4} textColor='gray.300' fontSize='lg'>
           Welcome to my portfolio! I'm a Computer Science student based in Buenos Aires, Argentina.<br/>
