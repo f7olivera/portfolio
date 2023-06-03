@@ -14,7 +14,7 @@ const Chess = () => {
       name='Chess'
       shortDescription='A website to play chess online.'
       description='A website to play chess online, edit and analyze board positions with a chess engine.'
-      url='
+      url=''
       codeUrl='https://github.com/f7olivera/chess'
       badges={['DJANGO', 'REACT', 'REDUX', 'BOOTSTRAP', 'DJANGO-CHANNELS', 'SQLITE']}>
       <Flex cursor='pointer' width='100%' overflow='hidden' mb='1rem' ref={viewport}>
